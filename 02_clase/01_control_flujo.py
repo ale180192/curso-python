@@ -58,7 +58,7 @@ else:
     print("No cumples años en Enero")
 
 """
-Operador terniario
+Operador terneario
 """
 dia_actual = "Lunes"
 es_lunes_hoy = True if dia_actual == "Lunes" else False

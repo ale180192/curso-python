@@ -137,3 +137,36 @@ val = midict["key1"]
 print(midict)
 print(val)
 
+# acceso seguro a diccionarios
+midict = {"key1": "val1", "key2": "val2"}
+key1 = midict.get("key1")
+print(key1)
+key3 = midict.get("key3")
+print(key3)
+
+# acesso seguro a diccionarios anidados
+user = {
+    "name": "Maria",
+    "direccion": {
+        "ciudad": "queretaro"
+    }
+}
+ciudad = user["direccion"]["ciudad"]
+print(ciudad)
+# raise exception
+user = {
+    "name": "Maria",
+    "direccion": None
+}
+# ciudad = user["direccion"]["ciudad"]
+
+# forma segura cuando el key no existe o es None
+ciudad = "CDMX"
+if user.get("direccion") and user.get("direccion").get("ciudad"):
+    ciudad = user.get("direccion").get("ciudad")
+print(f"ciudad metodo largo: {ciudad}")
+
+# forma corta
+ciudad = user.get("direccion").get("ciudad") \
+    if user.get("direccion") and user.get("direccion").get("ciudad") else "CDMX"
+print("forma corta ciudad: ", ciudad)
