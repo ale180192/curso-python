@@ -45,16 +45,7 @@ agregar todos los elementos de la lista "companias_tech" que tengan menor a 6 ca
 mientras que los que tengan 6 o mas caracteres deberan ser agregados a la lista nombres_largos.
 Imprimir en terminal cuantos elementos tiene cada lista.
 """
-companias_tech = ["google", "facebook", "microsoft", "apple", "spacex", "twitter", "neuralink"]
-nombres_cortos = []
-nombres_largos = []
-for compania in companias_tech:
-    if len(compania) < 7:
-        nombres_cortos.append(compania)
-    else:
-        nombres_largos.append(compania)
-print(nombres_largos)
-print(nombres_cortos)
+
 
 # Usando el bucle "for" realizar lo siguiente:
 """
@@ -92,18 +83,3 @@ donde almacenaremos el numero de caracteres de su nombre.
 ser True si el usuario tiene la key "email" y False de lo contrario
 * imprimir de nuevo toda la lista -> print(mi_lista)
 """
-usuarios = [
-    {"nombre": "Maria", "email": "maria@gmail.com", "edad": 55},
-    {"nombre": "Juan", "email": "juan@gmail.com", "edad": 17},
-    {"nombre": "Alberto", "email": "alberto@gmail.com", "edad": 55},
-]
-for user in usuarios:
-    user["longitud_nombre"] = len(user["nombre"])
-    if user["longitud_nombre"] > 5:
-        del user["email"]
-print(usuarios)
-for user in usuarios:
-    user["tiene_email"] = True
-    if not user.get("email"):
-        user["tiene_email"] = False
-print(usuarios)
