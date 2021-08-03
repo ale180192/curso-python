@@ -6,7 +6,7 @@ que se llama asi misma por un numero finito de veces,
 debemos garantizar que exista una condicion que rompa el bucle
 infinito de recursion.
 
-* La tecnica divide y venseras se apoya en la recursion para
+* La tecnica divide y venceras se apoya en la recursion para
     solucionar problemos complejos, dividiendo estos en problemas
     mas pequeños que pueden ser resueltos de forma mas facil.
 
