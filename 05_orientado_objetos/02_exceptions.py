@@ -93,6 +93,16 @@ finally:
     print("cerrar conexion con base de datos.")
 
 
+# Exceptions personalizadas
+class StockException(Exception):
+    
+    def __init__(self, msg):
+        self.msg = msg
+
+class CustomException(Exception):
+    pass
+
+
 """
 Notas:
 
