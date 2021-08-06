@@ -66,6 +66,8 @@ import sys
 sys.path
 ```
 
+Una ves que nuestro modulo ha sido importado podemos haceder a cada una de sus clases, variables o funciones mediante la notacion de punto. El modulo importado es un espacion de nombres y para acceder a todos sus elementos tenemos que usar la notacion punto. por ejemplo carrito_compra.CarritoCompra
+
 
 ### Hacer visible nuestro modulo python para que pueda ser importado correctamente
 Para lograr que nuestro modulo de python pueda ser importado correctamente tenemos estas opciones:
@@ -81,3 +83,122 @@ BASE_DIR = os.path.dirname(PATH_ENTRYPOINT_FILE)
 sys.path.append(BASE_DIR)
 print(sys.path)
 ```
+
+#### Ejemplo
+
+**Para este ejemplo hemos declarado nuestro modulo carrito_compra.py, tambien tenemos nuestro script de entrada entrypoint.py. vamos a ejecutarlo .....**
+
+<br>
+<br>
+
+### Sentencia from \<module> import \<objeto1>, \<objeto2>, ...., \<objetoN>
+
+Esta sentencia es una alternativa a import la cual nos da la flexibilida de importar directamente los objetos del modulo. Con esta sentencia podemos referenciar directamente los objetos sin nesecidad de usar la notacion punto.
+Estos objetos pueden ser desde variables hasta modulos, veremos mas adelante que un paquete contiene modulos.
+
+
+```python
+# importando objetos de un modulo
+from <module_name> import <object (s)>
+
+# importando modulos de un paquete
+from <paquete> import <modulo1>, <modulo2>, ..., <moduloN>
+
+#Podemos indicar un alias a nuestro import.
+from <paquete> import <modulo1> as mi_alias
+```
+
+#### Ejemplo:
+**Veamos este concepto en nuestro ejemplo ...**
+
+<br>
+<br>
+
+
+### La variable \__name__
+
+Cuando un modulo es ejecutado directamente como punto de entrada, se ejecutaran todas las sentencias del modulo, lo mismo pasara cuando el modulo sea importado. Si queremos distinguir cuando nuestro modulo esta siendo importado o ejecutado directamente como punto de entrada podemos usar la variable \__name__
+
+El interprete de python en tiempo de ejecucion asignara el valor \__main__ a nuestra variable \__name__, de esta forma podemos hacer la distincion antes mencionada.
+
+```python
+if __name__ == "__main__":
+    # estas sentencias se ejecutaran unicamente cuando
+    # nuestro modulo se ejectuado como punto de entrada.
+    print("modulo ejecutato como punto de entrada ... pytho modulo.py")
+```
+
+
+## Paquetes en python
+
+Los paquetes en python nos permiten agrupar de forma jerarquica nuestros modulos. De igual forma podemos acceder a todos los modulos de nuestro paquete usando la notacion de punto. Incluso podemos definir subpaquetes dentro de nuestros paquetes.
+
+Definir nuestros paquetes es realmente sencillo, solo tenemos que crear un folder y agregar un archivo/modulo \__init__.py, este modulo es importado(y por lo tanto ejectuado) cuando importamos nuestro paquete. Podemos poner sentencias de inicializacion de nuestro modulo o puede ser un modulo vacio.
+
+A partir de python 3.3 ya no es obligatorio nuestro modulo \__init__, solo es opcional en caso de que necesitemos hacer tareas de inicializacion.
+
+```
+📦paquete
+ ┣ 📂sub_paquete
+ ┃ ┣ 📜__init__.py
+ ┃ ┗ 📜module3.py
+ ┣ 📜__init__.py
+ ┣ 📜modulo1.py
+ ┗ 📜modulo2.py
+```
+
+#### Ejemplo:
+**Veamos un ejemplo de nuestro paquete "paquete"**
+
+<br>
+<br>
+
+### Sentencia: from <paquete> import *
+
+Con esta sentencia podemos importar todos los modulos de nuestro paquete, si existe algun sub paquete este sera importado(sus modulos de este subpaquete no.
+
+La afirmacion anterior tiene una condicion, la condicion es que se importaran todos los modulos que esten declarados en el modulo de inicializacion \__init__.py como sigue:
+
+<br>
+
+paquete/\__init__.py
+```python
+__all__ = [
+        'modulo1',
+        'modulo2',
+        ]
+```
+
+entrypoint.py
+```python
+# Esta sentencia de importacion importara modulo1 y modulo2
+from paquete import *
+```
+
+### Sentencia: from paquete.modulo1 import *
+
+Con esta sentencia de igual forma importamos todos los objetos que se encuentren en nuestro modulo, esta importacion se limita a los restringidos 
+por la variable \__all__
+
+<br>
+
+paquete/modulo1.py
+```python
+
+__all__ = ["foo", "bar"]
+
+def foo():
+    print("foo")
+
+def bar():
+    print("bar")
+
+def private_method():
+    print("private method")
+```
+
+```python
+# Esta sentencia de importacion importara modulo1 y modulo2
+from paquete import *
+```
+

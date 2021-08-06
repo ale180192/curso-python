@@ -19,8 +19,6 @@ class A():
     def __init__(self, nombre) -> None:
         self.nombre = nombre
         
-    def __repr__(self) -> str:
-        return self.nombre
 
 # definicion
 class User:
