@@ -197,8 +197,11 @@ def private_method():
     print("private method")
 ```
 
+entrypoint.py
 ```python
-# Esta sentencia de importacion importara modulo1 y modulo2
-from paquete import *
+# Esta sentencia de importacion importara foo() y bar()
+from paquete.modulo1 import *
 ```
+
+
 
