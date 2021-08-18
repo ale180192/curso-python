@@ -37,7 +37,7 @@ Una vez que hemos creado nuestro entorno virtual tenemos que activarlo para pode
         <tr>
             <td>POSIX</td>
             <td>bash/zsh</td>
-            <td>$ source <venv>/bin/activate</td>
+            <td>$ source venv/bin/activate</td>
         </tr>
         <tr>
             <td></td>
@@ -98,4 +98,7 @@ pip freeze > requeriments.txt
 
 # Instalamos las dependencias a partir de un archivo.txt
 pip install -r requeriments.txt
+
+# desactivar entorno virtual
+deactivate
 ```
